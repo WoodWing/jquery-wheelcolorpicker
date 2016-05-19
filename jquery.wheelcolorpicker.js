@@ -1367,11 +1367,11 @@
 		if(!color)
 			return this;
 
-        methods.setColor.call( this, color );
-        var $widget = this.parents('.jQWCP-wWidget:eq(0)');
-        var $input = $( $widget.data('jQWCP.inputElm') );
-        $input.val( methods.getValue.call( $input ) );
-        this.trigger('sliderup');
+		methods.setColor.call( this, color );
+		var $widget = this.parents('.jQWCP-wWidget:eq(0)');
+		var $input = $( $widget.data('jQWCP.inputElm') );
+		$input.val( methods.getValue.call( $input ) );
+		this.trigger('sliderup');
 	}
 	
 	/**
