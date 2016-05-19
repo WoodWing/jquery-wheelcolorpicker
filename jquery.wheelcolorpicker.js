@@ -1366,8 +1366,12 @@
 		var color = $.fn.wheelColorPicker.strToColor( value );
 		if(!color)
 			return this;
-			
-		return methods.setColor.call( this, color );
+
+		methods.setColor.call( this, color );
+		var $widget = this.parents('.jQWCP-wWidget:eq(0)');
+		var $input = $( $widget.data('jQWCP.inputElm') );
+		$input.val( methods.getValue.call( $input ) );
+		this.trigger('sliderup');
 	}
 	
 	/**
