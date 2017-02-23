@@ -799,7 +799,7 @@
 			var $this = $(this);
 			var settings = $this.data('jQWCP.settings');
 			var $widget = null;
-			
+
 			// Destroy must only occur when it's initialized
 			if(!settings)
 				return;
@@ -807,6 +807,16 @@
 			// Reset layout
 			if(settings.layout == 'block') {
 				$widget = $( $this.data('jQWCP.widget') );
+
+				// check if active control is the same widget as destroyed widget, remove the reference if it's true
+				var $control = $( $('body').data('jQWCP.activeControl') ); // Refers to slider wrapper or wheel
+				if ($control.length) {
+					var controlWidget = $control.closest('.jQWCP-wWidget');
+					if ($widget.is(controlWidget)) {
+						$('body').data('jQWCP.activeControl', null);
+					}
+				}
+
 				$widget.before($this);
 				$widget.remove();
 				$this.show();
